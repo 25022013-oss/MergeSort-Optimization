@@ -1,0 +1,10 @@
+*.class
+*.jar
+*.log
+target/
+out/
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+.DS_Store
