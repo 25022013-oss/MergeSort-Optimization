@@ -1,18 +1,20 @@
 package main.java;
-public class MergeCutoff {
 
-    private MergeCutoff() {
-    }
+public class MergeCutoff {
 
     public static void sort(Comparable[] a, int cutoff) {
         if (a == null || a.length <= 1) {
             return;
         }
+        int safeCutoff = Math.max(0, cutoff);
         Comparable[] aux = new Comparable[a.length];
-        sort(a, aux, 0, a.length - 1, Math.max(0, cutoff));
+        sort(a, aux, 0, a.length - 1, safeCutoff);
     }
 
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi, int cutoff) {
+        if (hi <= lo) {
+            return;
+        }
         if (hi - lo + 1 <= cutoff) {
             insertionSort(a, lo, hi);
             return;
@@ -37,6 +39,7 @@ public class MergeCutoff {
         for (int k = lo; k <= hi; k++) {
             aux[k] = a[k];
         }
+
         int i = lo;
         int j = mid + 1;
         for (int k = lo; k <= hi; k++) {
@@ -56,10 +59,10 @@ public class MergeCutoff {
         return v.compareTo(w) < 0;
     }
 
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
+    private static void exch(Comparable[] a, int i, int j) {
+        Comparable temp = a[i];
         a[i] = a[j];
-        a[j] = swap;
+        a[j] = temp;
     }
 
     public static boolean isSorted(Comparable[] a) {
