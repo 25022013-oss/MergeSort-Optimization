@@ -8,11 +8,11 @@ import java.util.Random;
 public class ExperimentRunner {
 
     private static final int[] SIZES = {10_000, 50_000, 100_000, 500_000};
-    private static final int[] CUTOFFS = {0, 3, 5, 7, 10, 12, 15, 20, 25, 30, 40, 50};
+    private static final int[] CUTOFFS = {0, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 20, 25, 30};
     private static final String[] TYPES = {"random", "nearly_sorted", "few_unique"};
-    private static final int WARMUP_RUNS = 2;
-    private static final int MEASURED_RUNS = 5;
-    private static final long SEED = 25022013L;
+    private static final int WARMUP_RUNS = 3;
+    private static final int MEASURED_RUNS = 7;
+    private static final long SEED = 777777L;
 
     public static void main(String[] args) throws IOException {
         File outDir = new File("out");
